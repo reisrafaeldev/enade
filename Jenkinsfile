@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'maven_home'
-        jdk 'jdk17'
-    }
-
     stages {
         stage('Checkout') {
             steps {
