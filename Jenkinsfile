@@ -1,40 +1,37 @@
 pipeline {
     agent any
+
     tools {
-        nodejs "v18.20.3"
+        maven '3.6.3'
+        jdk 'jdk17'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/reisrafaeldev/test-jenkins.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/reisrafaeldev/enade.git']]])
             }
         }
 
-/*         stage('Install dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                sh 'npm run build'
-            }
-        }
 
         stage('Run Unit Tests') {
             steps {
-                sh 'npm run test'
+                sh 'mvn test'
             }
         }
 
         stage('Scan with SonarQube') {
             steps {
                 withSonarQubeEnv('Sonarqube') {
-                    sh 'sonar-scanner -Dsonar.projectKey=my-react-app -Dsonar.sources=src -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_5af1336f1d35228322371a9fe7000234eb91fcf6'
+                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=manuten-o -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_4f6cbb7e70c9ce441af8461a44888369374e33c9
+'
                 }
-            } */
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
         }
     }
 }
