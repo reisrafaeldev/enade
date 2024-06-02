@@ -13,6 +13,12 @@ pipeline {
             }
         }
         
+    stage('Run Unit Tests') {
+        steps {
+            sh 'mvn test'
+        }
+    }
+
     stage('Scan with SonarQube') {
         steps {
             withSonarQubeEnv('Sonarqube') {
@@ -24,18 +30,10 @@ pipeline {
         }
     }
         
-        stage('Run Unit Tests') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-
-
-
-        stage('Build') {
-            steps {
-                sh 'mvn clean package'
-            }
+    stage('Build') {
+        steps {
+            sh 'mvn clean package'
         }
     }
+}
 }
