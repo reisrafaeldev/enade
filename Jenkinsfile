@@ -19,16 +19,12 @@ pipeline {
         }
     }
 
-    stage('Scan with SonarQube') {
-        steps {
-            withSonarQubeEnv('Sonarqube') {
-                sh 'mvn clean verify sonar:sonar \
-                      -Dsonar.projectKey=manuten-o \
-                      -Dsonar.host.url=http://localhost:9000 \
-                      -Dsonar.login=sqp_4f6cbb7e70c9ce441af8461a44888369374e33c9'
-            }
-        }
+  stage('SonarQube Analysis') {
+    def mvn = tool 'MAVEN';
+    withSonarQubeEnv() {
+      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=manutencao"
     }
+  }
         
     stage('Build') {
         steps {
