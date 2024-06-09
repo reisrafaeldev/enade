@@ -22,7 +22,7 @@ pipeline {
     stage('SonarQube Analysis') {
         steps {
             withSonarQubeEnv('manutencao') {
-                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=manutencao'
+                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=manutencao -Dsonar.host.url=http://localhost:9000 -Dsonar.login=squ_a642e2bcd679bd5a7118e6330ba81a6da8b2bf92'
             }
         }
     }
