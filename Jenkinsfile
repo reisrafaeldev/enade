@@ -21,7 +21,7 @@ pipeline {
 
     stage('SonarQube Analysis') {
         steps {
-            withSonarQubeEnv('manutencao') {
+            withSonarQubeEnv(credentialId: 'sonar-token' ,installationName: 'manutencao') {
                 sh 'mvn clean verify sonar:sonar \
                       -Dsonar.projectKey=manutencao \
                       -Dsonar.host.url=http://localhost:9000 \
