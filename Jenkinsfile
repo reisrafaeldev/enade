@@ -26,7 +26,7 @@ pipeline {
                 mvn clean verify sonar:sonar \
                 -Dsonar.projectKey=manutencao \
                 -Dsonar.host.url=http://sonarqube:9000 \
-                -Dsonar.login=sqp_d12b2fda7a3e76215823adf937dcb479d03b8679
+                -Dsonar.login=sqp_b1bffd137768e79c7c38bc550d90f822f7b64838
             """
             }
         }
