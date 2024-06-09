@@ -19,12 +19,13 @@ pipeline {
         }
     }
 
-  stage('SonarQube Analysis') {
-    def mvn = tool 'MAVEN';
-    withSonarQubeEnv() {
-      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=manutencao"
+    stage('SonarQube Analysis') {
+        steps {
+            withSonarQubeEnv('manutencao') {
+                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=manutencao'
+            }
+        }
     }
-  }
         
     stage('Build') {
         steps {
