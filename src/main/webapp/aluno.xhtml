@@ -37,14 +37,14 @@
 					</p:column>
 
 					<p:column headerText="Opções" exportable="false">
-						<center>
+						<div style="text-align: center;">
 							<p:commandButton icon="ui-icon-pencil" value="Editar"
 								onclick="PF('record').show();" update="formPrincipal:panelRecord" process="@this"
 								rendered="#{lista.tbTipoUsuarioidTipoUsuario.idTipoUsuario == 2}">
 								<f:setPropertyActionListener target="#{usuarioBean.usuario}"
 									value="#{lista}" />
 							</p:commandButton>
-						</center>
+						</div>
 					</p:column>
 
 				</p:dataTable>

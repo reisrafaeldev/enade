@@ -30,7 +30,7 @@
 					</p:column>
 
 					<p:column headerText="Opções" exportable="false">
-						<center>
+						<div style="text-align: center;">
 
 							<p:commandButton icon="ui-icon-pencil" value="Editar"
 								onclick="PF('record').show();"
@@ -42,7 +42,7 @@
 							<p:commandButton icon="ui-icon-trash" value="Deletar"
 								action="#{provaBean.remover(lista)}" process="@this"
 								update="@form" />
-						</center>
+						</div>
 					</p:column>
 
 				</p:dataTable>

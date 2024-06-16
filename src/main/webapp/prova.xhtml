@@ -63,14 +63,14 @@
 						<h:outputText value="#{lista.reposta}" />
 					</p:column>
 					<p:column headerText="Opções" exportable="false">
-						<center>
+						<div style="text-align: center;">
 							<p:commandButton icon="ui-icon-pencil" value="Respota da Questão"
 								onclick="PF('record').show();"
 								update="formPrincipal:panelRecord" process="@this">
 								<f:setPropertyActionListener target="#{questaoBean.questao}"
 									value="#{lista}" />
 							</p:commandButton>
-						</center>
+						</div>
 					</p:column>
 
 				</p:dataTable>
