@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.enade.model;
 
 import java.io.Serializable;
@@ -23,12 +18,10 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
- * @author claud
+ * Classe de entidade para 'Tbusuario'.
  */
 @Entity
 @Table(name = "tbusuario")
-
 public class Tbusuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -127,16 +120,11 @@ public class Tbusuario implements Serializable {
 
 	@Override
 	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are not set
 		if (!(object instanceof Tbusuario)) {
 			return false;
 		}
 		Tbusuario other = (Tbusuario) object;
-		if ((this.idUsuario == null && other.idUsuario != null)
-				|| (this.idUsuario != null && !this.idUsuario.equals(other.idUsuario))) {
-			return false;
-		}
-		return true;
+		return (this.idUsuario != null) ? this.idUsuario.equals(other.idUsuario) : other.idUsuario == null;
 	}
 
 	@Override

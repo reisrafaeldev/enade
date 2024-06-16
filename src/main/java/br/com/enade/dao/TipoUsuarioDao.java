@@ -20,7 +20,7 @@ public class TipoUsuarioDao implements Serializable {
 
 	@PostConstruct
 	void init() {
-		this.dao = new DAO<Tbtipousuario>(this.em, Tbtipousuario.class);
+		this.dao = new DAO<>(this.em, Tbtipousuario.class);
 	}
 
 	public Tbtipousuario buscarPorId(Long tipoUsuarioId) {
@@ -30,5 +30,4 @@ public class TipoUsuarioDao implements Serializable {
 	public List<Tbtipousuario> listaTodos() {
 		return this.dao.listaTodos();
 	}
-
 }
