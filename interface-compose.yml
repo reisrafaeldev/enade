@@ -1,0 +1,37 @@
+services:
+  sonarqube:
+    image: sonarqube:lts-community
+    ports:
+      - "9000:9000"
+    environment:
+      - SONARQUBE_JDBC_URL=jdbc:mysql://mysql:3306/mysql
+      - SONARQUBE_JDBC_USERNAME=root
+      - SONARQUBE_JDBC_PASSWORD=root
+    depends_on:
+      - mysql
+    networks:
+      - esteira_devops
+
+  mysql:
+    image: mysql:8.0.25
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./enade.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - esteira_devops
+
+  tomcat:
+    image: tomcat:9.0
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./target/enade.war:/usr/local/tomcat/webapps/enade.war
+    networks:
+      - esteira_devops
+
+networks:
+  esteira_devops:
+    driver: bridge
