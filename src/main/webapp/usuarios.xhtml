@@ -33,7 +33,7 @@
 					</p:column>
 
 					<p:column headerText="Opções" exportable="false">
-						<center>
+						<div style="text-align: center;">
 							<p:commandButton icon="ui-icon-pencil" value="Editar"
 								onclick="PF('record').show();"
 								update="formPrincipal:panelRecord" process="@this">
@@ -44,7 +44,7 @@
 								action="#{usuarioBean.remover(lista)}" process="@this"
 								update="@form" />
 
-						</center>
+						</div>
 					</p:column>
 
 				</p:dataTable>
